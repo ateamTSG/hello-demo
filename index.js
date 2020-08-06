@@ -1,11 +1,9 @@
-var express = require('express');
-var app     = express();
- 
-app.get('/', function(req,res){
-  res.send('This is a demonstration of full CI/CD using Azure Devops & ARO - © A-Team TSG');
-});
- 
-var port = 3000;
-app.listen(port,function(){
-  console.log('Listening on port:' + port);
-});
+const express = require('express');
+const app = express();
+const port = 3000;
+// Define the static file path
+app.use(express.static(__dirname+'/public'));
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/index.html');
+})
+app.listen(port, () => console.log('The server running on Port '+port));
