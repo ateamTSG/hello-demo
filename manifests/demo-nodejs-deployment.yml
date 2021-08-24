@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-nodejs-deployment
+  labels:
+    app: demo-nodejs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-nodejs
+  template:
+    metadata:
+      labels:
+        app: demo-nodejs
+    spec:
+      containers:
+      - name: demo-nodejs
+        image: acraksfifanonprod.azurecr.io/demo-nodejs:latest
+        ports:
+        - containerPort: 3000
